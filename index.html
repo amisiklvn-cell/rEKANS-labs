@@ -33,7 +33,7 @@
     <meta name="twitter:image" content="https://amisiklvn-cell.github.io/rEKANS-labs/assets/optimized/social-preview.png">
 
     <link rel="stylesheet" href="style.css">
-    <script src="script.js?v=4" defer></script>
+    <script src="script.js?v=8" defer></script>
 <link rel="canonical" href="https://amisiklvn-cell.github.io/rEKANS-labs/">
 </head>
 
@@ -98,6 +98,7 @@
                 <a href="#apps">My Creations</a>
                 <a href="#tools">Community</a>
                 <a href="#submit">Submit</a>
+                <a href="#feedback">Feedback</a>
                 <a href="#about">About</a>
             </nav>
 
@@ -263,6 +264,89 @@
                     </p>
                 </div>
 
+            </div>
+        </section>
+
+
+        <!-- VISITOR FEEDBACK -->
+        <section id="feedback" class="section">
+            <div class="container">
+                <h2>Feedback &amp; Suggestions</h2>
+
+                <p>
+                    Your feedback helps us improve rEKANS Lab's.
+                    Tell us what works, what needs fixing or what
+                    you would like to see next.
+                </p>
+
+                <p class="feedback-email">
+                    Send feedback to:
+                    <a href="mailto:amisiklvn@gmail.com">
+                        amisiklvn@gmail.com
+                    </a>
+                </p>
+
+                <form id="feedback-form" class="feedback-form">
+                    <div class="feedback-field">
+                        <label for="feedback-name">Your name (optional)</label>
+                        <input
+                            type="text"
+                            id="feedback-name"
+                            name="name"
+                            maxlength="80"
+                            autocomplete="name"
+                            placeholder="Enter your name"
+                        >
+                    </div>
+
+                    <div class="feedback-field">
+                        <label for="feedback-rating">Your rating</label>
+                        <select id="feedback-rating" name="rating" required>
+                            <option value="">Choose a rating</option>
+                            <option value="5 - Excellent">5 - Excellent</option>
+                            <option value="4 - Very good">4 - Very good</option>
+                            <option value="3 - Good">3 - Good</option>
+                            <option value="2 - Needs improvement">2 - Needs improvement</option>
+                            <option value="1 - Poor">1 - Poor</option>
+                        </select>
+                    </div>
+
+                    <div class="feedback-field">
+                        <label for="feedback-category">Feedback category</label>
+                        <select id="feedback-category" name="category" required>
+                            <option value="">Choose a category</option>
+                            <option value="Website design">Website design</option>
+                            <option value="Bug report">Bug report</option>
+                            <option value="Suggestion">Suggestion</option>
+                            <option value="Feature request">Feature request</option>
+                            <option value="General feedback">General feedback</option>
+                        </select>
+                    </div>
+
+                    <div class="feedback-field">
+                        <label for="feedback-message">Your message</label>
+                        <textarea
+                            id="feedback-message"
+                            name="message"
+                            rows="6"
+                            maxlength="3000"
+                            required
+                            placeholder="Write your feedback or suggestion here..."
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="hero-button">
+                        Send Feedback
+                    </button>
+
+                    <p class="feedback-note">
+                        Your email app will open with your feedback prepared.
+                        Nothing is uploaded or stored automatically.
+                    </p>
+
+                    <p id="feedback-status" class="feedback-status"
+                       role="status" aria-live="polite"></p>
+                </form>
             </div>
         </section>
 

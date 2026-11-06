@@ -953,3 +953,557 @@ button:focus-visible {
         animation-iteration-count: 1 !important;
     }
 }
+
+/* =========================================
+   PREMIUM RESPONSIVE UPGRADE V1
+   rEKANS Lab's
+   ========================================= */
+
+/* Improved typography and rendering */
+
+html {
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+/* Adaptive content width */
+
+.container {
+    width: min(92%, 1240px);
+    margin-inline: auto;
+}
+
+/* Refined sticky header */
+
+.header {
+    background: rgba(10, 12, 16, 0.88);
+    border-bottom-color: rgba(255, 255, 255, 0.09);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.16);
+}
+
+.header .container {
+    min-height: 78px;
+    gap: clamp(12px, 2vw, 28px);
+}
+
+.header-logo {
+    width: 52px;
+    height: 52px;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.logo:hover .header-logo {
+    transform: scale(1.06);
+    box-shadow: 0 0 22px var(--red-glow);
+}
+
+.navigation {
+    gap: clamp(14px, 2vw, 28px);
+}
+
+.navigation a {
+    position: relative;
+    padding-block: 8px;
+    font-weight: 600;
+}
+
+.navigation a::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    content: "";
+    background: var(--sky-blue);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.2s ease;
+}
+
+.navigation a:hover::after,
+.navigation a[aria-current="location"]::after {
+    transform: scaleX(1);
+}
+
+/* Premium hero */
+
+.hero {
+    position: relative;
+    isolation: isolate;
+    min-height: clamp(500px, 65vh, 760px);
+    padding: clamp(85px, 11vw, 145px) 0;
+    background:
+        radial-gradient(
+            ellipse at 82% 25%,
+            rgba(255, 42, 77, 0.17),
+            transparent 42%
+        ),
+        radial-gradient(
+            ellipse at 12% 85%,
+            rgba(0, 210, 255, 0.11),
+            transparent 42%
+        ),
+        linear-gradient(
+            145deg,
+            #0A0C10 0%,
+            #101521 55%,
+            #0A0C10 100%
+        );
+}
+
+.hero::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+    opacity: 0.17;
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.035) 1px,
+            transparent 1px
+        );
+    background-size: 48px 48px;
+    mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 90%
+    );
+}
+
+.hero-label {
+    display: inline-block;
+    margin-bottom: 24px;
+    padding: 7px 13px;
+    border: 1px solid rgba(0, 210, 255, 0.25);
+    border-radius: 999px;
+    background: rgba(0, 210, 255, 0.06);
+    letter-spacing: 2.5px;
+}
+
+.hero h1 {
+    max-width: 1000px;
+    font-size: clamp(2.6rem, 6vw, 5.8rem);
+    line-height: 1.08;
+    letter-spacing: clamp(-3px, -0.15vw, -1px);
+    text-wrap: balance;
+}
+
+.hero h1 span {
+    background: linear-gradient(
+        90deg,
+        var(--red),
+        #FF7189
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-description {
+    max-width: 620px;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    line-height: 1.8;
+}
+
+/* Improved search */
+
+.search-form {
+    max-width: 620px;
+    margin-top: 34px;
+}
+
+.search-label {
+    margin-bottom: 10px;
+}
+
+.search-control {
+    gap: 10px;
+}
+
+.search-control input {
+    min-height: 54px;
+    padding-inline: 17px;
+    border-radius: 10px;
+    background: rgba(24, 29, 40, 0.88);
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.search-control input:focus {
+    border-color: var(--sky-blue);
+    outline: none;
+    box-shadow: 0 0 0 4px var(--blue-glow);
+}
+
+.search-control button {
+    min-width: 76px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+/* Improved buttons */
+
+.hero-button,
+.welcome-button {
+    border-radius: 9px;
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.hero-button {
+    padding: 14px 28px;
+}
+
+.hero-button:active,
+.welcome-button:active {
+    transform: scale(0.98);
+}
+
+/* Better section spacing */
+
+.section {
+    padding: clamp(65px, 8vw, 110px) 0;
+}
+
+.section h2 {
+    letter-spacing: -0.8px;
+    text-wrap: balance;
+}
+
+.section > .container > p {
+    line-height: 1.8;
+}
+
+/* Refined empty states and future cards */
+
+.empty-state {
+    padding: clamp(30px, 5vw, 52px);
+    border-radius: 18px;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(0, 210, 255, 0.055),
+            transparent 65%
+        ),
+        linear-gradient(
+            145deg,
+            var(--surface-light),
+            var(--surface)
+        );
+}
+
+.empty-state p {
+    max-width: 560px;
+    line-height: 1.8;
+}
+
+.catalog-card {
+    border-radius: 15px;
+    background: linear-gradient(
+        145deg,
+        var(--surface-light),
+        var(--surface)
+    );
+}
+
+/* Refined submission and about panels */
+
+#submit .about-content {
+    border-radius: 16px;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
+}
+
+.about-content p {
+    line-height: 1.85;
+}
+
+/* Footer */
+
+.footer {
+    padding: 42px 0;
+    background: #07090D;
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Larger desktop displays */
+
+@media (min-width: 1600px) {
+    .container {
+        width: min(88%, 1680px);
+    }
+
+    .header .container {
+        min-height: 88px;
+    }
+
+    .header-logo {
+        width: 58px;
+        height: 58px;
+    }
+
+    .navigation a {
+        font-size: 1rem;
+    }
+
+    .section {
+        padding-block: 120px;
+    }
+}
+
+/* 4K and ultra-wide displays */
+
+@media (min-width: 2400px) {
+    .container {
+        width: min(84%, 1920px);
+    }
+
+    .hero {
+        min-height: 780px;
+    }
+
+    .hero h1 {
+        max-width: 1250px;
+        font-size: clamp(5.8rem, 4vw, 7.5rem);
+    }
+
+    .hero-description {
+        max-width: 760px;
+        font-size: 1.35rem;
+    }
+
+    .section h2 {
+        font-size: 3rem;
+    }
+
+    body {
+        font-size: 1.1rem;
+    }
+}
+
+/* Mobile refinement */
+
+@media (max-width: 600px) {
+    .container {
+        width: 91%;
+    }
+
+    .header .container {
+        min-height: 65px;
+        gap: 9px;
+    }
+
+    .header-logo {
+        width: 44px;
+        height: 44px;
+    }
+
+    .navigation a::after {
+        display: none;
+    }
+
+    .navigation a {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .hero {
+        min-height: 430px;
+        padding: 76px 0;
+    }
+
+    .hero-label {
+        font-size: 0.7rem;
+        letter-spacing: 1.7px;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.25rem, 9vw, 3.4rem);
+        line-height: 1.13;
+    }
+
+    .search-control input {
+        min-height: 48px;
+        padding-inline: 12px;
+    }
+
+    .section {
+        padding-block: 62px;
+    }
+
+    .empty-state {
+        border-radius: 14px;
+    }
+}
+
+/* Very narrow phones */
+
+@media (max-width: 360px) {
+    .container {
+        width: 92%;
+    }
+
+    .hero h1 {
+        font-size: 2.05rem;
+    }
+
+    .hero-label {
+        letter-spacing: 1.2px;
+    }
+}
+
+/* Respect devices that request less motion */
+
+@media (prefers-reduced-motion: reduce) {
+    .logo:hover .header-logo {
+        transform: none;
+    }
+
+    .navigation a::after {
+        transition: none;
+    }
+}
+
+/* =========================================
+   REKANS FEEDBACK FEATURE V1
+   ========================================= */
+
+#feedback {
+    background:
+        radial-gradient(
+            ellipse at 10% 40%,
+            rgba(255, 42, 77, 0.07),
+            transparent 55%
+        ),
+        var(--background);
+}
+
+.feedback-form {
+    width: 100%;
+    max-width: 760px;
+    margin-top: 28px;
+    padding: clamp(20px, 4vw, 36px);
+    background: linear-gradient(
+        145deg,
+        var(--surface-light),
+        var(--surface)
+    );
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--red);
+    border-radius: 16px;
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.2);
+}
+
+.feedback-field {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-bottom: 22px;
+}
+
+.feedback-field label {
+    color: var(--white);
+    font-weight: 600;
+}
+
+.feedback-field input,
+.feedback-field select,
+.feedback-field textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 14px;
+    color: var(--white);
+    background: #0A0C10;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    font: inherit;
+}
+
+.feedback-field select {
+    color-scheme: dark;
+}
+
+.feedback-field textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.feedback-field input:focus-visible,
+.feedback-field select:focus-visible,
+.feedback-field textarea:focus-visible {
+    outline: 2px solid var(--sky-blue);
+    outline-offset: 3px;
+    border-color: var(--sky-blue);
+}
+
+.feedback-form .hero-button {
+    width: 100%;
+    border: 0;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+}
+
+.feedback-note,
+.feedback-status {
+    margin-top: 16px;
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+.feedback-status {
+    color: var(--sky-blue);
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 600px) {
+    .feedback-form {
+        padding: 20px 16px;
+    }
+
+    .feedback-field input,
+    .feedback-field select,
+    .feedback-field textarea {
+        font-size: 16px;
+    }
+}
+\n
+/* Visible feedback contact email */
+.feedback-email {
+    margin-top: 18px;
+    color: var(--muted);
+    overflow-wrap: anywhere;
+}
+
+.feedback-email a {
+    color: var(--sky-blue);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.feedback-email a:hover {
+    text-decoration: underline;
+}

@@ -331,7 +331,7 @@ const navigationLinks = document.querySelectorAll(".navigation a");
 
 /* Includes the new Submit section. */
 const sections = document.querySelectorAll(
-    "#home, #apps, #tools, #submit, #about"
+    "#home, #apps, #tools, #submit, #feedback, #about"
 );
 
 
@@ -396,3 +396,114 @@ if ("IntersectionObserver" in window) {
 
     setInterval(updateLocalClock, 1000);
 })();
+
+/* REKANS FEEDBACK FEATURE V1 */
+
+const feedbackForm = document.getElementById("feedback-form");
+
+if (feedbackForm) {
+    feedbackForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        if (!feedbackForm.reportValidity()) return;
+
+        const formData = new FormData(feedbackForm);
+
+        const name = String(formData.get("name") || "").trim();
+        const rating = String(formData.get("rating") || "");
+        const category = String(formData.get("category") || "");
+        const message = String(formData.get("message") || "").trim();
+
+        const subject = "Website Feedback - rEKANS Lab's";
+
+        const body = [
+            "Hello rEKANS,",
+            "",
+            "I would like to share feedback about rEKANS Lab's.",
+            "",
+            "Name: " + (name || "Not provided"),
+            "Rating: " + rating,
+            "Category: " + category,
+            "",
+            "Feedback:",
+            message,
+            "",
+            "Thank you."
+        ].join("\n");
+
+        const recipient = "amisiklvn@gmail.com";
+
+        const query =
+            "to=" + encodeURIComponent(recipient) +
+            "&subject=" + encodeURIComponent(subject) +
+            "&body=" + encodeURIComponent(body);
+
+        const gmailIntent =
+            "intent://compose?" + query +
+            "#Intent;scheme=mailto;package=com.google.android.gm;end";
+
+        const gmailWeb =
+            "https://mail.google.com/mail/?view=cm&fs=1&" + query;
+
+        const status = document.getElementById("feedback-status");
+
+        if (status) {
+            status.textContent =
+                "Opening Gmail. If it does not open, use the fallback link below.";
+
+            const fallback = document.createElement("a");
+            fallback.href = gmailWeb;
+            fallback.textContent = "Open Gmail in your browser";
+            fallback.target = "_blank";
+            fallback.rel = "noopener noreferrer";
+
+            status.appendChild(document.createTextNode(" "));
+            status.appendChild(fallback);
+        }
+
+        try {
+            sessionStorage.setItem("rekans_feedback_waiting", "yes");
+        } catch (error) {
+            console.warn("Feedback session storage unavailable.");
+        }
+
+        window.location.href = gmailIntent;
+    });
+}
+
+
+/* REKANS FEEDBACK RESET AFTER GMAIL RETURN */
+
+function resetFeedbackAfterGmailReturn() {
+    let waiting = false;
+
+    try {
+        waiting = sessionStorage.getItem("rekans_feedback_waiting") === "yes";
+    } catch (error) {
+        return;
+    }
+
+    if (!waiting || document.visibilityState !== "visible") return;
+
+    sessionStorage.removeItem("rekans_feedback_waiting");
+
+    const form = document.getElementById("feedback-form");
+    const status = document.getElementById("feedback-status");
+
+    if (form) form.reset();
+
+    if (status) {
+        status.textContent =
+            "Welcome back. Your feedback form is ready for another message.";
+    }
+}
+
+document.addEventListener(
+    "visibilitychange",
+    resetFeedbackAfterGmailReturn
+);
+
+window.addEventListener(
+    "pageshow",
+    resetFeedbackAfterGmailReturn
+);
