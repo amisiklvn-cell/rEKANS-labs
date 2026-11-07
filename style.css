@@ -1507,3 +1507,62 @@ body {
 .feedback-email a:hover {
     text-decoration: underline;
 }
+
+
+/* REKANS AMBIENT BACKGROUND V1 */
+
+body {
+    background-color: #070707;
+    background-image:
+        radial-gradient(
+            ellipse 85% 42% at 50% -8%,
+            rgba(220, 38, 38, 0.18),
+            transparent 72%
+        ),
+        radial-gradient(
+            ellipse 55% 38% at 0% 38%,
+            rgba(220, 38, 38, 0.055),
+            transparent 70%
+        ),
+        radial-gradient(
+            ellipse 55% 38% at 100% 72%,
+            rgba(56, 189, 248, 0.045),
+            transparent 72%
+        ),
+        linear-gradient(
+            180deg,
+            #080808 0%,
+            #050505 55%,
+            #080808 100%
+        );
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Soft red glow behind the hero content */
+
+.hero {
+    background-color: transparent;
+    background-image:
+        radial-gradient(
+            ellipse at 50% 45%,
+            rgba(220, 38, 38, 0.105),
+            transparent 68%
+        );
+}
+
+/* Mobile performance and scrolling */
+
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+    }
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+    body {
+        scroll-behavior: auto;
+    }
+}
