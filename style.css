@@ -1566,3 +1566,38 @@ body {
         scroll-behavior: auto;
     }
 }
+
+
+/* REKANS HERO HEADLINE V1 */
+.hero .hero-headline {
+    font-size: clamp(2.8rem, 8vw, 6.5rem);
+    line-height: 1.12;
+    font-weight: 900;
+    letter-spacing: -0.045em;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.16em;
+    margin: 0 0 28px;
+}
+
+.hero .hero-headline .hero-word-red {
+    color: #ff3030;
+}
+
+.hero .hero-headline .hero-word-black {
+    color: #080808;
+    background: #87ceeb;
+    padding: 0.02em 0.18em;
+    border-radius: 0.12em;
+}
+
+.hero .hero-headline .hero-word-blue {
+    color: #87ceeb;
+}
+
+@media (max-width: 480px) {
+    .hero .hero-headline {
+        font-size: clamp(2.5rem, 12vw, 3.8rem);
+    }
+}
