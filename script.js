@@ -519,3 +519,190 @@ window.addEventListener(
     "pageshow",
     resetFeedbackAfterGmailReturn
 );
+
+
+
+/* REKANS APP CATALOGUE SYSTEM V1 */
+
+(() => {
+    const container = document.getElementById("apps-container");
+
+    if (!container) return;
+
+    const cataloguePath = "apps/apps.json";
+
+    function safeLocalPath(value, extension) {
+        if (typeof value !== "string") return null;
+
+        const path = value.trim();
+
+        if (
+            !path.startsWith("apps/") ||
+            path.startsWith("//") ||
+            path.includes("\\") ||
+            path.includes("?") ||
+            path.includes("#") ||
+            path.split("/").some(part => part === "." || part === "..") ||
+            !path.toLowerCase().endsWith(extension)
+        ) {
+            return null;
+        }
+
+        return path;
+    }
+
+    function createTextElement(tag, className, value) {
+        const element = document.createElement(tag);
+
+        if (className) element.className = className;
+
+        element.textContent = String(value);
+
+        return element;
+    }
+
+    function createAppCard(app) {
+        if (
+            !app ||
+            typeof app.name !== "string" ||
+            typeof app.version !== "string" ||
+            typeof app.description !== "string" ||
+            typeof app.fileSize !== "string"
+        ) {
+            return null;
+        }
+
+        const apkPath = safeLocalPath(app.apk, ".apk");
+
+        if (!apkPath) return null;
+
+        const card = document.createElement("article");
+        card.className = "catalog-card app-catalog-card";
+
+        const header = document.createElement("div");
+        header.className = "app-card-header";
+
+        const iconPath = safeLocalPath(app.icon, ".png");
+
+        if (iconPath) {
+            const icon = document.createElement("img");
+
+            icon.className = "app-card-icon";
+            icon.src = iconPath;
+            icon.alt = "";
+            icon.loading = "lazy";
+            icon.width = 72;
+            icon.height = 72;
+
+            header.appendChild(icon);
+        } else {
+            const placeholder = createTextElement(
+                "span",
+                "app-card-icon app-card-icon-placeholder",
+                app.name.trim().charAt(0).toUpperCase()
+            );
+
+            placeholder.setAttribute("aria-hidden", "true");
+            header.appendChild(placeholder);
+        }
+
+        const heading = document.createElement("div");
+        heading.className = "app-card-heading";
+
+        heading.appendChild(
+            createTextElement("h3", "", app.name.trim())
+        );
+
+        heading.appendChild(
+            createTextElement(
+                "p",
+                "app-card-version",
+                "Version " + app.version.trim()
+            )
+        );
+
+        header.appendChild(heading);
+        card.appendChild(header);
+
+        card.appendChild(
+            createTextElement(
+                "p",
+                "app-card-description",
+                app.description.trim()
+            )
+        );
+
+        const metadata = document.createElement("p");
+        metadata.className = "app-card-metadata";
+
+        const platform = typeof app.platform === "string"
+            ? app.platform.trim()
+            : "Android";
+
+        metadata.textContent =
+            platform + " · " + app.fileSize.trim();
+
+        card.appendChild(metadata);
+
+        const download = document.createElement("a");
+
+        download.className = "app-download-button";
+        download.href = apkPath;
+        download.download = "";
+        download.textContent = "Download APK";
+        download.setAttribute(
+            "aria-label",
+            "Download " + app.name.trim() + " APK"
+        );
+
+        card.appendChild(download);
+
+        return card;
+    }
+
+    async function loadApps() {
+        try {
+            const response = await fetch(cataloguePath, {
+                cache: "no-cache"
+            });
+
+            if (!response.ok) {
+                throw new Error("Catalogue request failed: " + response.status);
+            }
+
+            const catalogue = await response.json();
+
+            if (!catalogue || !Array.isArray(catalogue.apps)) {
+                throw new Error("Invalid app catalogue format.");
+            }
+
+            const cards = catalogue.apps
+                .map(createAppCard)
+                .filter(Boolean);
+
+            if (cards.length === 0) {
+                return;
+            }
+
+            container.replaceChildren(...cards);
+
+            if (typeof filterCatalog === "function") {
+                filterCatalog();
+            }
+
+        } catch (error) {
+            console.error("rEKANS Labs app catalogue:", error);
+
+            const status = createTextElement(
+                "p",
+                "app-catalog-error",
+                "App listings could not be loaded. Please try again later."
+            );
+
+            status.setAttribute("role", "status");
+            container.appendChild(status);
+        }
+    }
+
+    loadApps();
+})();
