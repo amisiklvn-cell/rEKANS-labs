@@ -1939,3 +1939,83 @@ body {
         transform: none;
     }
 }
+
+
+/* REKANS DEFINITIVE FULL VIEWPORT MENU FIX */
+
+@media screen and (max-width: 600px) {
+    html body nav#site-navigation {
+        position: fixed !important;
+        inset: 0 !important;
+        display: flex !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        height: 100dvh !important;
+        min-height: 100vh !important;
+        min-height: 100dvh !important;
+        max-width: none !important;
+        max-height: none !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
+        padding: calc(85px + env(safe-area-inset-top)) 8vw
+                 calc(30px + env(safe-area-inset-bottom)) !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 14px !important;
+        background: #87ceeb !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        z-index: 3000 !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translate3d(100%, 0, 0);
+        transition: transform 0.9s cubic-bezier(0.65, 0, 0.35, 1),
+                    opacity 0.7s ease,
+                    visibility 0s linear 0.9s;
+    }
+
+    html body nav#site-navigation.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translate3d(0, 0, 0);
+        transition: transform 0.9s cubic-bezier(0.65, 0, 0.35, 1),
+                    opacity 0.7s ease,
+                    visibility 0s;
+    }
+
+    html body nav#site-navigation a {
+        color: #07111a !important;
+        border-bottom: 1px solid rgba(7, 17, 26, 0.18) !important;
+    }
+
+    html body nav#site-navigation a:hover,
+    html body nav#site-navigation a[aria-current="location"] {
+        color: #e02035 !important;
+    }
+
+    .header.menu-open {
+        z-index: 3001 !important;
+    }
+
+    .header.menu-open .menu-toggle {
+        position: relative;
+        z-index: 3003 !important;
+    }
+
+    body.menu-open {
+        overflow: hidden !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html body nav#site-navigation,
+    html body nav#site-navigation a {
+        transition: none !important;
+    }
+}
