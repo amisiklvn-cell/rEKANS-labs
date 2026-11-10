@@ -213,35 +213,47 @@ if (welcomeScreen && welcomeButton) {
 
 const menuToggle = document.getElementById("menu-toggle");
 const navigation = document.getElementById("site-navigation");
-
+const siteHeader = menuToggle
+    ? menuToggle.closest(".header")
+    : null;
 
 function closeNavigation() {
     if (!menuToggle || !navigation) return;
 
     navigation.classList.remove("is-open");
+    menuToggle.classList.remove("is-active");
+
+    if (siteHeader) {
+        siteHeader.classList.remove("menu-open");
+    }
+
+    document.body.classList.remove("menu-open");
 
     menuToggle.setAttribute("aria-expanded", "false");
-    menuToggle.setAttribute(
-        "aria-label",
-        "Open navigation menu"
-    );
+    menuToggle.setAttribute("aria-label", "Open navigation menu");
 }
-
 
 if (menuToggle && navigation) {
     menuToggle.addEventListener("click", () => {
-        const isOpen = navigation.classList.toggle("is-open");
+        const isOpen = !navigation.classList.contains("is-open");
 
-        menuToggle.setAttribute(
-            "aria-expanded",
-            String(isOpen)
-        );
+        if (isOpen) {
+            navigation.classList.add("is-open");
+            menuToggle.classList.add("is-active");
 
+            if (siteHeader) {
+                siteHeader.classList.add("menu-open");
+            }
+
+            document.body.classList.add("menu-open");
+        } else {
+            closeNavigation();
+        }
+
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
         menuToggle.setAttribute(
             "aria-label",
-            isOpen
-                ? "Close navigation menu"
-                : "Open navigation menu"
+            isOpen ? "Close navigation menu" : "Open navigation menu"
         );
     });
 
