@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Discover apps and useful tools from rEKANS Labs, including software projects and practical digital resources.">
+    <meta name="author" content="rEKANS">
+    <meta name="theme-color" content="#080808">
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+
+    <title>rEKANS Labs | Apps &amp; Useful Tools</title>
+
+    <!-- OPEN GRAPH -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="rEKANS Labs">
+    <meta property="og:title" content="rEKANS Labs | Apps & Useful Tools">
+    <meta property="og:description" content="Explore apps and useful tools from rEKANS Labs.">
+    <meta property="og:url" content="https://amisiklvn-cell.github.io/rEKANS-labs/">
+    <meta property="og:image" content="https://amisiklvn-cell.github.io/rEKANS-labs/assets/optimized/social-preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="rEKANS Labs social preview">
+
+    <!-- X CARD -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="rEKANS Labs | Apps & Useful Tools">
+    <meta name="twitter:description" content="Explore apps and useful tools from rEKANS Labs.">
+    <meta name="twitter:image" content="https://amisiklvn-cell.github.io/rEKANS-labs/assets/optimized/social-preview.png">
+
+    <link rel="stylesheet" href="style.css?v=17">
+    <script src="script.js?v=12" defer></script>
+<link rel="canonical" href="https://amisiklvn-cell.github.io/rEKANS-labs/">
+</head>
+
+<body>
+
+    <!-- VISITOR WELCOME SCREEN -->
+    <div id="welcome-screen" class="welcome-overlay" hidden>
+        <div class="welcome-card" role="dialog"
+             aria-modal="true" aria-labelledby="welcome-title">
+
+            <img
+                src="assets/optimized/rekans-labs-logo.webp"
+                alt="rEKANS Labs logo"
+                class="welcome-logo"
+            >
+
+            <h2 id="welcome-title">Welcome to rEKANS Labs!</h2>
+
+            <p id="welcome-message">
+                Explore digital products and creations.
+            </p>
+
+            <button id="welcome-continue" class="welcome-button" type="button">
+                Get Started
+            </button>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
+
+            <a href="index.html" class="logo" aria-label="rEKANS Labs Home">
+                <img
+                    src="assets/optimized/rekans-labs-logo.webp"
+                    alt="rEKANS Labs"
+                    class="header-logo"
+                >
+            </a>
+
+            <!-- COMPACT LOCAL CLOCK -->
+            <div class="header-clock" aria-label="Your local date and time">
+                <time id="kenya-clock" class="header-clock-time">--:--</time>
+                <time id="kenya-date" class="header-clock-date">Loading date...</time>
+            </div>
+
+            <button
+                class="menu-toggle"
+                id="menu-toggle"
+                type="button"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="site-navigation"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+
+
+        </div>
+    </header>
+
+    <nav class="navigation" id="site-navigation">
+                <a href="#home">Home</a>
+                <a href="#apps">My Creations</a>
+                <a href="#tools">Community</a>
+                <a href="#submit">Submit</a>
+                <a href="#feedback">Feedback</a>
+                <a href="#about">About</a>
+            </nav>
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+        <!-- HOME SECTION -->
+        <section id="home" class="hero">
+            <div class="container">
+
+                <p class="hero-label">WELCOME TO rEKANS LABS</p>
+
+                <h1 class="hero-headline" aria-label="EXPLORE THE OTHER SIDE">
+                    <span class="hero-marquee-track" aria-hidden="true">
+                        <span class="hero-marquee-group">
+                            <span class="hero-word-red">EXPLORE</span>
+                            <span class="hero-word-black">THE</span>
+                            <span class="hero-word-blue">OTHER SIDE</span>
+                        </span>
+                        <span class="hero-marquee-group">
+                            <span class="hero-word-red">EXPLORE</span>
+                            <span class="hero-word-black">THE</span>
+                            <span class="hero-word-blue">OTHER SIDE</span>
+                        </span>
+                    </span>
+                </h1>
+
+                <p class="hero-description">
+                    A platform for digital products created by rEKANS
+                    and independent creators.
+                </p>
+
+                <!-- LIVE SEARCH -->
+                <form class="search-form" id="site-search-form" role="search">
+                    <label class="search-label" for="site-search">
+                        Search digital products
+                    </label>
+
+                    <div class="search-control">
+                        <input
+                            type="search"
+                            id="site-search"
+                            name="q"
+                            placeholder="Search products and tools..."
+                            autocomplete="off"
+                        >
+
+                        <button type="button" id="clear-search">
+                            Clear
+                        </button>
+                    </div>
+                </form>
+
+                <p id="search-status" class="search-status"
+                   aria-live="polite"></p>
+
+                <!-- NO RESULTS MESSAGE -->
+                <div id="no-results" class="no-results" hidden>
+                    <h3>No results found</h3>
+
+                    <p>
+                        We couldn't find that product. You can contact
+                        us with your suggestion.
+                    </p>
+
+                    <a
+                        href="mailto:amisiklvn@gmail.com?subject=Product%20Suggestion%20-%20rEKANS%20Labs"
+                        class="request-link"
+                    >
+                        Send a suggestion
+                    </a>
+                </div>
+
+                <a href="#apps" class="hero-button">
+                    Explore Creations
+                </a>
+
+            </div>
+        </section>
+
+        <!-- rEKANS CREATIONS -->
+        <section id="apps" class="section creations-section">
+    <div class="container">
+
+        <div class="creations-heading">
+            <span class="creations-eyebrow">
+                THE rEKANS COLLECTION
+            </span>
+
+            <h2>rEKANS <span>Creations</span></h2>
+
+            <p class="creations-intro">
+                Discover original applications, useful software
+                and digital tools developed under the rEKANS brand.
+            </p>
+        </div>
+
+        <div class="creations-showcase">
+            <div class="showcase-decoration" aria-hidden="true">
+                <span class="showcase-orbit orbit-one"></span>
+                <span class="showcase-orbit orbit-two"></span>
+                <span class="showcase-mark">R</span>
+            </div>
+
+            <div class="showcase-content">
+                <span class="showcase-label">
+                    <span class="showcase-dot"></span>
+                    OFFICIAL COLLECTION
+                </span>
+
+                <h3>Built with purpose.<br>Designed to be useful.</h3>
+
+                <p>
+                    A home for software and digital experiences
+                    created by rEKANS. This collection will grow
+                    as projects are completed and prepared for release.
+                </p>
+
+                <div class="showcase-tags">
+                    <span>Applications</span>
+                    <span>Digital tools</span>
+                    <span>Software</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="creations-library-heading">
+            <div>
+                <span class="creations-eyebrow">EXPLORE THE COLLECTION</span>
+                <h3>Our creations</h3>
+            </div>
+
+            <span class="library-status">
+                <span></span>
+                Collection in preparation
+            </span>
+        </div>
+
+        <div id="apps-container">
+            <div class="empty-state creations-empty-state">
+                <div class="empty-state-icon" aria-hidden="true">✦</div>
+
+                <span class="empty-state-label">NOTHING PUBLISHED YET</span>
+
+                <h3>Something is being built.</h3>
+
+                <p>
+                    Our collection is currently being prepared.
+                    Check back later to discover the applications
+                    and digital tools released here.
+                </p>
+
+                <div class="empty-state-footer">
+                    <span class="empty-state-line"></span>
+                    <span>rEKANS LABS</span>
+                    <span class="empty-state-line"></span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+        <!-- COMMUNITY CREATIONS -->
+        <section id="tools" class="section">
+            <div class="container">
+
+                <h2>Community Creations</h2>
+
+                <p>
+                    Discover digital products made by independent
+                    developers, designers and other creators.
+                </p>
+
+                <div id="tools-container">
+                    <div class="empty-state">
+                        <span class="empty-state-icon">✦</span>
+                        <h3>Community Creations Coming Soon</h3>
+                        <p>
+                            We're preparing a space to showcase
+                            creations from other talented people.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SUBMIT YOUR CREATION -->
+        <section id="submit" class="section">
+            <div class="container">
+
+                <h2>Submit Your Creation</h2>
+
+                <p>
+                    Are you a developer, designer or digital creator?
+                    You can share your work with the rEKANS Labs community.
+                </p>
+
+                <div class="about-content">
+                    <p>
+                        We welcome original apps, software, digital tools
+                        and other digital products.
+                    </p>
+
+                    <p>
+                        Every submission will be reviewed before it is
+                        published. Include your name, product description
+                        and original source or download link.
+                    </p>
+
+                    <p>
+                        You must own the product or have permission
+                        to submit it.
+                    </p>
+
+                    <a
+                        href="mailto:amisiklvn@gmail.com?subject=Community%20Creation%20Submission%20-%20rEKANS%20Labs&body=Hello%20rEKANS%2C%0A%0AI%20would%20like%20to%20submit%20my%20creation.%0A%0ACreator%20name%3A%0AProduct%20name%3A%0ADescription%3A%0AProduct%20link%3A%0A%0AI%20confirm%20that%20I%20own%20this%20creation%20or%20have%20permission%20to%20submit%20it.%0A%0AThank%20you."
+                        class="hero-button"
+                    >
+                        Submit by Email
+                    </a>
+
+                    <p>
+                        <small>
+                            Online submission forms will be introduced later.
+                        </small>
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- VISITOR FEEDBACK -->
+        <section id="feedback" class="section">
+            <div class="container">
+                <h2>Feedback &amp; Suggestions</h2>
+
+                <p>
+                    Your feedback helps us improve rEKANS Labs.
+                    Tell us what works, what needs fixing or what
+                    you would like to see next.
+                </p>
+
+                <p class="feedback-email">
+                    Send feedback to:
+                    <a href="mailto:amisiklvn@gmail.com">
+                        amisiklvn@gmail.com
+                    </a>
+                </p>
+
+                <form id="feedback-form" class="feedback-form">
+                    <div class="feedback-field">
+                        <label for="feedback-name">Your name (optional)</label>
+                        <input
+                            type="text"
+                            id="feedback-name"
+                            name="name"
+                            maxlength="80"
+                            autocomplete="name"
+                            placeholder="Enter your name"
+                        >
+                    </div>
+
+                    <div class="feedback-field">
+                        <label for="feedback-rating">Your rating</label>
+                        <select id="feedback-rating" name="rating" required>
+                            <option value="">Choose a rating</option>
+                            <option value="5 - Excellent">5 - Excellent</option>
+                            <option value="4 - Very good">4 - Very good</option>
+                            <option value="3 - Good">3 - Good</option>
+                            <option value="2 - Needs improvement">2 - Needs improvement</option>
+                            <option value="1 - Poor">1 - Poor</option>
+                        </select>
+                    </div>
+
+                    <div class="feedback-field">
+                        <label for="feedback-category">Feedback category</label>
+                        <select id="feedback-category" name="category" required>
+                            <option value="">Choose a category</option>
+                            <option value="Website design">Website design</option>
+                            <option value="Bug report">Bug report</option>
+                            <option value="Suggestion">Suggestion</option>
+                            <option value="Feature request">Feature request</option>
+                            <option value="General feedback">General feedback</option>
+                        </select>
+                    </div>
+
+                    <div class="feedback-field">
+                        <label for="feedback-message">Your message</label>
+                        <textarea
+                            id="feedback-message"
+                            name="message"
+                            rows="6"
+                            maxlength="3000"
+                            required
+                            placeholder="Write your feedback or suggestion here..."
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="hero-button">
+                        Send Feedback
+                    </button>
+
+                    <p class="feedback-note">
+                        Your email app will open with your feedback prepared.
+                        Nothing is uploaded or stored automatically.
+                    </p>
+
+                    <p id="feedback-status" class="feedback-status"
+                       role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="section">
+            <div class="container">
+
+                <h2>About rEKANS Labs</h2>
+
+                <div class="about-content">
+                    <p>
+                        rEKANS Labs is an independent digital products
+                        platform featuring creations from rEKANS and
+                        independent creators.
+                    </p>
+
+                    <p>
+                        The platform brings together apps, software,
+                        digital tools and other useful digital products.
+                    </p>
+
+                    <p>
+                        Our goal is to provide a place where digital
+                        creations can be discovered, explored and shared.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+
+            <p>
+                &copy; <span id="current-year"></span> rEKANS Labs.
+                All rights reserved.
+            </p>
+
+            <p>Built by rEKANS.</p>
+
+            <p>
+                <a class="footer-contact"
+                   href="mailto:amisiklvn@gmail.com?subject=Feedback%20%26%20Suggestions%20-%20rEKANS%20Labs">
+                    Contact Us
+                </a>
+            </p>
+      <p class="footer-legal-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <a href="terms.html">Terms of Use</a>
+      </p>
+
+
+        </div>
+    </footer>
+
+</body>
+</html>

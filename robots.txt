@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://amisiklvn-cell.github.io/rEKANS-labs/sitemap.xml
