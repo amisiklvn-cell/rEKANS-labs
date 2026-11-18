@@ -1,3 +1,14 @@
 {
-  "apps": []
+  "apps": [
+    {
+      "name": "Password Generator",
+      "version": "1.1.1",
+      "description": "Generate customizable passwords with adjustable length, character options, strength feedback and passphrase generation.",
+      "platform": "Android",
+      "fileSize": "9.9 MB",
+      "icon": "apps/icons/password-generator.png",
+      "apk": "apps/downloads/password-generator-v1.1.1.apk",
+      "details": "apps/password-generator.html"
+    }
+  ]
 }
