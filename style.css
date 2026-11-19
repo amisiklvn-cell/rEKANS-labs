@@ -1623,13 +1623,7 @@ body {
 
 
 
-/* Respect reduced-motion preferences for the hero ticker */
-@media (prefers-reduced-motion: reduce) {
-    .hero .hero-marquee-track {
-        animation: none !important;
-        transform: none !important;
-    }
-}
+/* Hero ticker intentionally continues regardless of reduced-motion preference. */
 
 
 /* REKANS CONSOLIDATED MOBILE NAVIGATION */
