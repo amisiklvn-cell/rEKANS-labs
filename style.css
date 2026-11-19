@@ -2227,3 +2227,13 @@ body {
     max-width: 100%;
     border: 0;
 }
+
+/* Keep the Explore ticker moving even with Android Remove animations ON */
+@media (prefers-reduced-motion: reduce) {
+    .hero .hero-marquee-track {
+        animation: rekansHeroTicker 8s linear infinite !important;
+        animation-duration: 8s !important;
+        animation-iteration-count: infinite !important;
+        animation-play-state: running !important;
+    }
+}
