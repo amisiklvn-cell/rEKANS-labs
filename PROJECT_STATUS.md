@@ -67,3 +67,20 @@
 
 ## Next task
 Begin mobile responsiveness and accessibility testing.
+
+
+## Phase 1 — Privacy and Terms pages
+
+Date: November 12, 2026
+
+- Added Privacy Policy and Terms of Use pages.
+- Disclosed functional browser storage, the welcome-date cookie,
+  feedback email workflow, catalogue requests, and GitHub Pages hosting.
+- Added footer links and responsive legal-page styling.
+- Updated sitemap with the homepage and both policy pages.
+- Corrected homepage branding to rEKANS Labs.
+- No AdSense or Analytics integration was added.
+- No application listings were added.
+- Changes are local only; no GitHub commit, push, or publication was performed.
+- Review and update privacy disclosures before introducing advertising,
+  analytics, consent tools, or other tracking services.

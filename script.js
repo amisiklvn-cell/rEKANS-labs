@@ -1,7 +1,7 @@
 "use strict";
 
 /* =========================================
-   rEKANS lab's — MAIN JAVASCRIPT
+   rEKANS Labs — MAIN JAVASCRIPT
    ========================================= */
 
 
@@ -25,7 +25,7 @@ const welcomeDateKey = "rekansLabsWelcomeDate";
 
 const dailyWelcomes = [
     {
-        title: "Welcome to rEKANS lab's!",
+        title: "Welcome to rEKANS Labs!",
         message: "Explore digital creations from rEKANS and independent creators."
     },
     {
@@ -58,7 +58,7 @@ const dailyWelcomes = [
     },
     {
         title: "Welcome Back!",
-        message: "Explore the latest creations featured on rEKANS lab's."
+        message: "Explore the latest creations featured on rEKANS Labs."
     },
     {
         title: "Discover Digital Possibilities!",
@@ -102,7 +102,7 @@ const dailyWelcomes = [
     },
     {
         title: "Thanks for Visiting!",
-        message: "We appreciate your visit to rEKANS lab's."
+        message: "We appreciate your visit to rEKANS Labs."
     }
 ];
 
@@ -426,12 +426,12 @@ if (feedbackForm) {
         const category = String(formData.get("category") || "");
         const message = String(formData.get("message") || "").trim();
 
-        const subject = "Website Feedback - rEKANS Lab's";
+        const subject = "Website Feedback - rEKANS Labs";
 
         const body = [
             "Hello rEKANS,",
             "",
-            "I would like to share feedback about rEKANS Lab's.",
+            "I would like to share feedback about rEKANS Labs.",
             "",
             "Name: " + (name || "Not provided"),
             "Rating: " + rating,
@@ -497,16 +497,17 @@ function resetFeedbackAfterGmailReturn() {
 
     if (!waiting || document.visibilityState !== "visible") return;
 
-    sessionStorage.removeItem("rekans_feedback_waiting");
+    try {
+        sessionStorage.removeItem("rekans_feedback_waiting");
+    } catch (error) {
+        console.warn("Could not clear feedback session flag:", error);
+    }
 
-    const form = document.getElementById("feedback-form");
     const status = document.getElementById("feedback-status");
-
-    if (form) form.reset();
 
     if (status) {
         status.textContent =
-            "Welcome back. Your feedback form is ready for another message.";
+            "Welcome back. Your feedback entries have been preserved. Check your email app to confirm whether you sent the message.";
     }
 }
 
@@ -536,13 +537,18 @@ window.addEventListener(
 
         const path = value.trim();
 
+        const segments = path.split("/");
+
         if (
-            !path.startsWith("apps/") ||
-            path.startsWith("//") ||
+            segments.length < 2 ||
+            segments[0] !== "apps" ||
+            path.includes("%") ||
             path.includes("\\") ||
             path.includes("?") ||
             path.includes("#") ||
-            path.split("/").some(part => part === "." || part === "..") ||
+            segments.slice(1).some(
+                part => !/^[A-Za-z0-9][A-Za-z0-9._-]*$/.test(part)
+            ) ||
             !path.toLowerCase().endsWith(extension)
         ) {
             return null;
@@ -644,6 +650,20 @@ window.addEventListener(
 
         card.appendChild(metadata);
 
+        const detailsPath = safeLocalPath(app.details, ".html");
+
+        if (detailsPath) {
+            const details = document.createElement("a");
+            details.className = "app-download-button app-details-button";
+            details.href = detailsPath;
+            details.textContent = "View details";
+            details.setAttribute(
+                "aria-label",
+                "View details for " + app.name.trim()
+            );
+            card.appendChild(details);
+        }
+
         const download = document.createElement("a");
 
         download.className = "app-download-button";
@@ -661,9 +681,13 @@ window.addEventListener(
     }
 
     async function loadApps() {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 15000);
+
         try {
             const response = await fetch(cataloguePath, {
-                cache: "no-cache"
+                cache: "no-cache",
+                signal: controller.signal
             });
 
             if (!response.ok) {
@@ -701,6 +725,8 @@ window.addEventListener(
 
             status.setAttribute("role", "status");
             container.appendChild(status);
+        } finally {
+            clearTimeout(timeoutId);
         }
     }
 

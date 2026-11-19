@@ -10,3 +10,18 @@
 # Operating system files
 .DS_Store
 Thumbs.db
+
+# rEKANS Labs local project backups
+*-backup-*/
+*.backup
+*.backup-*
+*.bak
+*.before-*
+*.before-*.bak
+
+# Local maintenance and update scripts
+phase1.py
+apply_phase2_fixes.py
+
+# Local .gitignore safety copy
+/.gitignore.phase2-backup
