@@ -1,0 +1,29 @@
+{
+  "name": "rEKANS Labs",
+  "short_name": "rEKANS Labs",
+  "description": "Discover apps and useful tools from rEKANS Labs.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0C10",
+  "theme_color": "#080808",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/icons/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "lang": "en",
+  "dir": "ltr"
+}

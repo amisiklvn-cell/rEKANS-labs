@@ -478,8 +478,6 @@ if (feedbackForm) {
         } catch (error) {
             console.warn("Feedback session storage unavailable.");
         }
-
-        window.location.href = gmailIntent;
     });
 }
 
@@ -704,11 +702,15 @@ window.addEventListener(
                 .map(createAppCard)
                 .filter(Boolean);
 
-            if (cards.length === 0) {
-                return;
-            }
-
             container.replaceChildren(...cards);
+
+            if (cards.length === 0) {
+                const empty = document.createElement("p");
+                empty.className = "app-catalog-empty";
+                empty.textContent = "No apps are available right now. Check back later.";
+                empty.setAttribute("role", "status");
+                container.appendChild(empty);
+            }
 
             if (typeof filterCatalog === "function") {
                 filterCatalog();

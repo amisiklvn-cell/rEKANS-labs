@@ -2237,3 +2237,114 @@ body {
         animation-play-state: running !important;
     }
 }
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+   ========================================= */
+
+/* Mobile: max 768px */
+@media (max-width: 768px) {
+    html {
+        scroll-padding-top: 70px;
+    }
+
+    .container {
+        width: min(100%, 92%);
+        padding: 0 12px;
+    }
+
+    .header {
+        min-height: 64px;
+    }
+
+    .header .container {
+        min-height: 64px;
+        gap: 12px;
+    }
+
+    .header-logo {
+        width: 32px;
+        height: 32px;
+    }
+
+    .header-clock {
+        display: none;
+    }
+
+    .hero-headline {
+        font-size: 1.6rem;
+    }
+
+    .hero-description {
+        font-size: 0.95rem;
+    }
+
+    .search-control {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .search-control input,
+    .search-control button {
+        width: 100%;
+    }
+
+    .creations-heading h2 {
+        font-size: 1.5rem;
+    }
+
+    .hero-button,
+    .app-download-button {
+        width: 100%;
+        text-align: center;
+        padding: 14px 20px;
+    }
+
+    .footer .container {
+        text-align: center;
+        gap: 12px;
+    }
+
+    .footer p {
+        margin: 6px 0;
+    }
+
+    .legal-main {
+        padding: 20px 16px;
+    }
+
+    .legal-content h1 {
+        font-size: 1.6rem;
+    }
+
+    .pg-page {
+        padding: 20px 14px 50px;
+    }
+
+    .pg-icon {
+        width: 88px;
+        height: 88px;
+    }
+}
+
+/* Tablet: 769px - 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        width: min(950px, 92%);
+    }
+
+    .hero-headline {
+        font-size: 2rem;
+    }
+}
+
+/* Large desktop: min 1200px */
+@media (min-width: 1200px) {
+    .container {
+        width: min(1150px, 92%);
+    }
+
+    .hero-headline {
+        font-size: 2.5rem;
+    }
+}
