@@ -2,9 +2,9 @@
 
 ## Project
 - Name: rEKANS Lab's
-- Owner: amisiklvn-cell
-- Repository: https://github.com/amisiklvn-cell/rEKANS-labs
-- Website: https://amisiklvn-cell.github.io/rEKANS-labs/
+- Owner: rEKANS254
+- Repository: https://github.com/rEKANS254/rEKANS-labs
+- Website: https://rEKANS254.github.io/rEKANS-labs/
 - Hosting: GitHub Pages
 - Development environment: Termux on Android
 
